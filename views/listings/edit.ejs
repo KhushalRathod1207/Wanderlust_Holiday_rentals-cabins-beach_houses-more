@@ -1,0 +1,82 @@
+<%- layout("/layout/boilerplate") %>
+
+    <body>
+        <div class="row" style="--bs-gutter-x:0 !important;">
+            <div class="col-8 offset-2 my-5">
+                <h2>Edit Your Listing :</h2>
+                <form action="/listings/<%=listing._id%>?_method=PUT" enctype="multipart/form-data" method="POST"
+                    novalidate class="needs-validation">
+
+
+                    <div class="mb-3">
+                        <label for="title" class="form-label">title:</label>
+                        <input class="form-control" type="text" name="listing[title]" id="" value="<%=listing.title %>"
+                            required>
+                        <div class="valid-feedback">Title is correctly formatted.</div>
+                        <div class="invalid-feedback">Title is required.</div>
+
+                    </div>
+
+
+                    <div class="mb-3">
+                        <label for="description" class="form-label">description:</label>
+                        <br>
+                        <textarea class="form-control" name="listing[description]" id="" rows="5" cols="30"
+                            required><%=listing.description %></textarea>
+                        <div class="valid-feedback">Description is properly added.</div>
+                        <div class="invalid-feedback">Description is required.</div>
+                    </div>
+
+
+                    <div class="mb-3">
+                        <label for="description" class="form-label">description:</label>
+                        <br>
+                        <img src="<%=originalImageUrl %>" alt="Upload image ">
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="image" class="form-label">Upload Image:</label>
+                        <input class="form-control" type="file" name="listing[image]" id="" value="<%=listing.image %>">
+                        <div class="valid-feedback">Valid image URL entered.</div>
+                        <div class="invalid-feedback">Image URL is required.</div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="mb-3 col-md-6">
+                            <label for="price" class="form-label">price:</label>
+                            <input class="form-control" name="listing[price]" id="" value="<%=listing.price %>"
+                                required>
+                            <div class="valid-feedback">Price is valid.</div>
+                            <div class="invalid-feedback">Please enter a valid price.</div>
+
+
+                        </div>
+                        <div class="mb-3 col-md-6">
+                            <label for="country" class="form-label">country:</label>
+                            <input class="form-control" type="text" name="listing[country]" id=""
+                                value="<%=listing.country %>" required>
+                            <div class="valid-feedback">Country name is valid.</div>
+                            <div class="invalid-feedback">Country name is required.</div>
+
+
+                        </div>
+                    </div>
+
+
+                    <div class="mb-3">
+                        <label for="location" class="form-label">location:</label>
+                        <input class="form-control" type="text" name="listing[location]" id=""
+                            value="<%=listing.location %>" required>
+                        <div class="valid-feedback">Location is correct.</div>
+                        <div class="invalid-feedback">Location is required.</div>
+
+
+                    </div>
+
+
+                    <button class="btn btn-dark add_btn px-4 mt-2">Submit</button>
+                </form>
+            </div>
+        </div>
+    </body>
