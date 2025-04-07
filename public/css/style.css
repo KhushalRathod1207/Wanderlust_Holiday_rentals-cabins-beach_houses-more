@@ -45,6 +45,7 @@ body {
 .search_icon {
     background: #ff385c;
     color: white;
+    border: none;
     border-radius: 50%;
     width: 42px;
     height: 40px;

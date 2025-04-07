@@ -17,6 +17,7 @@ const WrapAsync = require("./utils/WrapAsync.js");
 const listingsRoute = require("./routes/listings.js");
 const reviewsRoute = require("./routes/reviews.js");
 const userRoute = require("./routes/user.js");
+const searchRoute = require("./routes/search.js");
 
 const { joi_listingSchema, Joi_reviewSchema } = require("./Schema.js");
 
@@ -126,6 +127,7 @@ app.use("/listings", listingsRoute);
 // its combination of parent and child :id is parameter  use in router review.js {mergeParams : true}
 app.use("/listings/:id/reviews", reviewsRoute);
 app.use("/", userRoute);
+app.use("/", searchRoute);
 
 
 

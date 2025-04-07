@@ -21,7 +21,6 @@ const upload = multer({ storage }); // multer save file on cloud storage
 // validate using joi schema  (server side check any filed missing when user input )
 
 
-
 router.route("/")
     // index  route - All route
     .get(WrapAsync(listingsController.index))
