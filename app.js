@@ -18,6 +18,7 @@ const listingsRoute = require("./routes/listings.js");
 const reviewsRoute = require("./routes/reviews.js");
 const userRoute = require("./routes/user.js");
 const searchRoute = require("./routes/search.js");
+const categoryRoutes = require("./routes/categories.js");
 
 const { joi_listingSchema, Joi_reviewSchema } = require("./Schema.js");
 
@@ -126,6 +127,7 @@ app.use((req, res, next) => {
 // its use to Destructure your code command path require 
 app.use("/listings", listingsRoute);
 // its combination of parent and child :id is parameter  use in router review.js {mergeParams : true}
+app.use("/listings", categoryRoutes);
 app.use("/listings/:id/reviews", reviewsRoute);
 app.use("/", userRoute);
 app.use("/", searchRoute);

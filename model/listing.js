@@ -45,6 +45,11 @@ const listSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "User",
     },
+    category: {
+        type: String,
+        enum: ["Trending", "Bed Breakfast", "Top Cities", "Farmes", "Boats", "Rooms", "Iconic Cities", "Mountain Sun", "Mountains", "Castles", "Earth Homes", "Amazing Pools", "Container", "Castles", "Camping", "Farms", "Arctic", "Domes"]
+
+    }
 
 });
 

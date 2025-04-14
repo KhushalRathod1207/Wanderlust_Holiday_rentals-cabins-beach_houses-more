@@ -91,6 +91,8 @@ body {
 }
 
 
+
+
 /*  Filters style  */
 
 .filter-container {
@@ -98,31 +100,28 @@ body {
     align-items: center;
     justify-content: space-between;
     flex-wrap: nowrap;
-    /* Prevents wrapping */
     gap: 1rem;
     padding: 1rem 0;
     overflow: hidden;
 }
 
-/* Ensures horizontal scrolling works properly */
+/* Horizontal scroll container */
 .filters-wrapper {
     display: flex;
     gap: 1rem;
     overflow-x: auto;
-    /* Enables horizontal scrolling */
     white-space: nowrap;
     scroll-behavior: smooth;
     padding-bottom: 10px;
     flex-grow: 1;
     max-width: 90vw;
-    /* Prevents full width */
 }
 
 .filters-wrapper::-webkit-scrollbar {
     display: none;
 }
 
-/* Ensures filter items don't stretch */
+/* Individual filter item */
 .filter-item {
     display: flex;
     flex-direction: column;
@@ -130,10 +129,9 @@ body {
     opacity: 0.7;
     cursor: pointer;
     min-width: 80px;
-    /* Makes sure items don't get too big */
     flex-shrink: 0;
-    /* Prevents auto-resizing */
     transition: all 0.3s ease;
+    text-align: center;
 }
 
 .filter-item:hover {
@@ -146,7 +144,18 @@ body {
     margin-bottom: 5px;
 }
 
-/* Tax toggle button adjustment */
+.filter-item p {
+    font-size: 1rem;
+    margin: 0;
+    color: #444;
+}
+
+.filter-item a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Tax toggle button (optional if used) */
 .tax-toggle {
     display: flex;
     align-items: center;
@@ -157,12 +166,11 @@ body {
     flex-shrink: 0;
 }
 
-/* Mobile View Fix */
+/* Mobile responsiveness */
 @media (max-width: 768px) {
     .filter-container {
         margin-left: auto;
         flex-direction: column;
-
     }
 
     .filters-wrapper {
@@ -171,7 +179,6 @@ body {
 
     .tax-toggle {
         margin-left: auto;
-        /* Pushes to the right */
         width: 100%;
         display: flex;
         align-content: center;

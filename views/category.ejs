@@ -1,0 +1,40 @@
+<%- layout("/layout/boilerplate") %>
+
+
+    <body style="margin-top: 100px !important;">
+        <div class="container">
+            <h3 class="text-center my-3">Listing for "<%= category %>"</h3>
+
+            <% if (listings.length> 0) { %>
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+                    <% listings.forEach(listing=> { %>
+                        <div class="col">
+                            <a href="/listings/<%= listing._id %>" class="link-list"
+                                style="text-decoration: none; color: inherit;">
+                                <div class="card listing-card h-100">
+                                    <img src="<%= listing.image.url || '/images/default.jpg' %>" class="card-img-top"
+                                        alt="<%= listing.title %>" style="height: 20rem; object-fit: cover;">
+                                    <div class="card-body d-flex flex-column">
+                                        <p class="card-text flex-grow-1">
+                                            <b style="color: #212529;">
+                                                <%= listing.title %>
+                                            </b><br>
+                                            <span style="color: #6a6a6a;">
+                                                <%= listing.description %>
+                                            </span>
+                                        </p>
+                                        <div style="color: #212529;">
+                                            ₹<%= listing.price.toLocaleString("en-IN") %>/ night
+                                                <i class="tex_info" style="display: none;">&nbsp; +18% GST</i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <% }); %>
+                </div>
+                <% } else { %>
+                    <h3 class="text-center my-5 text-danger">Listings are not available for "<%= category %>"</h3>
+                    <% } %>
+        </div>
+    </body>

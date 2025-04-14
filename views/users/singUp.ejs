@@ -18,10 +18,16 @@
                                 placeholder="Enter your email" required>
                             <div class="invalid-feedback">A valid email is required.</div>
                         </div>
-                        <div class="mb-3">
+                        <div class="mb-3 position-relative">
                             <label for="password" class="form-label">Password:</label>
+
                             <input class="form-control" type="password" name="password" id="password"
                                 placeholder="Enter your password" required>
+
+                            <!-- Eye Icon -->
+                            <i class="fa-solid fa-eye" id="togglePassword" style="position: absolute; top: 72%; right: 15px; transform: translateY(-50%);
+                              cursor: pointer; color: gray;"></i>
+
                             <div class="invalid-feedback">Password is required.</div>
                         </div>
                         <div class="form-check mb-3">

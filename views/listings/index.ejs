@@ -4,45 +4,24 @@
         <div class="filter-container">
 
             <div class="filters-wrapper" id="filtersWrapper">
-                <div class="filter-item"><i class="fa-solid fa-fire"></i>
-                    <p>Trending</p>
-                </div>
-                <div class="filter-item"><i class="fa-solid fa-igloo"></i>
-                    <p>Domes</p>
-                </div>
-                <div class="filter-item"><i class="fa-solid fa-mug-saucer"></i>
-                    <p>Bed & Breakfast</p>
-                </div>
-                <div class="filter-item"><i class="fa-solid fa-city"></i>
-                    <p>Top Cities</p>
-                </div>
-                <div class="filter-item"><i class="fa-solid fa-mountain"></i>
-                    <p>Mountains</p>
-                </div>
-                <div class="filter-item"><i class="fa-solid fa-sailboat"></i>
-                    <p>Boats</p>
-                </div>
-                <div class="filter-item"><i class="fa-solid fa-box"></i>
-                    <p>Container</p>
-                </div>
-                <div class="filter-item"><i class="fa-brands fa-fort-awesome"></i>
-                    <p>Castles</p>
-                </div>
-                <div class="filter-item"><i class="fa-solid fa-film"></i>
-                    <p>Frames</p>
-                </div>
-                <div class="filter-item"><i class="fa-solid fa-mountain-sun"></i>
-                    <p>Mountain Sun</p>
-                </div>
-                <div class="filter-item"><i class="fa-solid fa-house-crack"></i>
-                    <p>Earth Homes</p>
-                </div>
-                <div class="filter-item"><i class="fa-regular fa-snowflake"></i>
-                    <p>Artics</p>
-                </div>
-                <div class="filter-item"><i class="fa-solid fa-person-swimming"></i>
-                    <p>Pools</p>
-                </div>
+                <% const categories=[ { name: "Trending" , icon: "fa-fire" }, { name: "Domes" , icon: "fa-igloo" }, {
+                    name: "Bed & Breakfast" , icon: "fa-mug-saucer" }, { name: "Top Cities" , icon: "fa-city" }, {
+                    name: "Mountains" , icon: "fa-mountain" }, { name: "Boats" , icon: "fa-sailboat" }, {
+                    name: "Container" , icon: "fa-box" }, { name: "Castles" , icon: "fa-fort-awesome" }, {
+                    name: "Frames" , icon: "fa-film" }, { name: "Mountain Sun" , icon: "fa-mountain-sun" }, {
+                    name: "Earth Homes" , icon: "fa-house-crack" }, { name: "Artics" , icon: "fa-snowflake" }, {
+                    name: "Pools" , icon: "fa-person-swimming" } ]; %>
+
+                    <% for (let category of categories) { %>
+                        <div class="filter-item">
+                            <a href="/listings/category/<%= category.name %>">
+                                <div><i class="fa-solid <%= category.icon %>"></i></div>
+                                <p>
+                                    <%= category.name %>
+                                </p>
+                            </a>
+                        </div>
+                        <% } %>
             </div>
 
             <div class="tax-toggle">
