@@ -1,0 +1,110 @@
+<%- layout("/layout/boilerplate") %>
+
+    <body style="margin-top: 100px !important;">
+
+        <div class="container">
+            <h3 class="text-center mb-4">My Profile</h3>
+
+            <form action="/profile/<%= user._id %>/update" method="POST">
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="username">Username</label>
+                        <input type="text" class="form-control" name="user[username]" value="<%= user.username %>">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" name="user[email]" value="<%= user.email %>">
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="mobileNo">Mobile No</label>
+                        <input type="text" class="form-control" name="user[mobileNo]" value="<%= user.mobileNo %>">
+                    </div>
+                    <div class="col-md-6">
+                        <label for="gender">Gender</label>
+                        <select class="form-control" name="user[gender]">
+                            <option value="">Select</option>
+                            <option value="Male" <%=user.gender==="Male" ? "selected" : "" %>>Male</option>
+                            <option value="Female" <%=user.gender==="Female" ? "selected" : "" %>>Female</option>
+                            <option value="Other" <%=user.gender==="Other" ? "selected" : "" %>>Other</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="address">Address</label>
+                    <input type="text" class="form-control" name="user[address]" value="<%= user.address %>">
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <label for="country">Country</label>
+                        <input type="text" class="form-control" name="user[country]" value="<%= user.country %>">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="city">City</label>
+                        <input type="text" class="form-control" name="user[city]" value="<%= user.city %>">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="location">Location</label>
+                        <input type="text" class="form-control" name="user[location]" value="<%= user.location %>">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Update Profile</button>
+            </form>
+        </div>
+
+        <% if (currUser && currUser._id.toString()===user._id.toString()) { %>
+            <!-- Only show if the logged-in user matches the profile user -->
+            <div class="container">
+                <h3 class="text-center mb-4">My Listings</h3>
+
+                <% if (listings.length> 0) { %>
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+                        <% listings.forEach(function(listing) { %>
+                            <a href="/listings/<%= listing._id %>" class="link-list text-decoration-none text-dark">
+                                <div class="col">
+                                    <div class="card h-100">
+                                        <% if (listing.image && listing.image.url) { %>
+                                            <img style="height: 20rem;" src="<%= listing.image.url %>"
+                                                class="card-img-top" alt="Listing Image">
+                                            <% } else { %>
+                                                <img style="height: 20rem;" src="https://via.placeholder.com/300x200"
+                                                    class="card-img-top" alt="No Image Available">
+                                                <% } %>
+
+                                                    <div class="card-img-overlay"></div>
+                                                    <div class="card-body d-flex flex-column">
+                                                        <p class="card-text flex-grow-1">
+                                                            <b style="color: #212529;">
+                                                                <%= listing.title %>
+                                                            </b><br>
+                                                        <p style="color: #6a6a6a;">
+                                                            <%= listing.description.length> 100 ?
+                                                                listing.description.substring(0, 100) + "..." :
+                                                                listing.description %>
+                                                        </p>
+                                                        <div style="color: #212529;">
+                                                            ₹<%= listing.price.toLocaleString("en-IN") %> / night
+                                                        </div>
+                                                        </p>
+                                                    </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <% }) %>
+                    </div>
+                    <% } else { %>
+                        <p class="text-muted text-center">No listings found.</p>
+                        <% } %>
+            </div>
+            <% } else { %>
+                <div class="container mt-5 text-center">
+                    <h4>You can only view your own listings on your profile.</h4>
+                </div>
+                <% } %>
+
+    </body>

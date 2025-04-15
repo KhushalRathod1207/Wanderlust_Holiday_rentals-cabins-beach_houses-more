@@ -13,9 +13,9 @@ body {
     text-decoration: none !important;
 }
 
+
 .navbar {
     height: 5rem;
-    top: 0;
     background-color: white !important;
     z-index: 1000;
 }
@@ -56,16 +56,6 @@ body {
     text-decoration: none;
 }
 
-.user {
-    height: 53px;
-    background-color: #ffffff;
-    border-radius: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 53px;
-}
-
 .user_icon {
     background: #ff385c;
     color: white;
@@ -82,15 +72,6 @@ body {
     border: none;
     background: transparent;
 }
-
-/* Responsive Fixes */
-@media (max-width: 768px) {
-    .navbar-collapse {
-        background-color: #f8f9fa;
-    }
-}
-
-
 
 
 /*  Filters style  */

@@ -6,7 +6,13 @@ const userSchema = new Schema({
     email: {
         type: String,
         required: true,
-    }
+    },
+    mobileNo: String,
+    gender: String,
+    address: String,
+    country: String,
+    city: String,
+    location: String
     // username and passport 
     // auto define username and passport field
 });

@@ -13,9 +13,9 @@ const User = require("./model/user.js");
 
 const ExpressError = require("./utils/expressError.js");
 const WrapAsync = require("./utils/WrapAsync.js");
-
 const listingsRoute = require("./routes/listings.js");
 const reviewsRoute = require("./routes/reviews.js");
+const ProfileRoute = require("./routes/Profile.js");
 const userRoute = require("./routes/user.js");
 const searchRoute = require("./routes/search.js");
 const categoryRoutes = require("./routes/categories.js");
@@ -126,6 +126,7 @@ app.use((req, res, next) => {
 
 // its use to Destructure your code command path require 
 app.use("/listings", listingsRoute);
+app.use("/profile", ProfileRoute);
 // its combination of parent and child :id is parameter  use in router review.js {mergeParams : true}
 app.use("/listings", categoryRoutes);
 app.use("/listings/:id/reviews", reviewsRoute);
