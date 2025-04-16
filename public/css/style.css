@@ -13,33 +13,73 @@ body {
     text-decoration: none !important;
 }
 
+/* Navbar */
 
+/* Navbar Base */
 .navbar {
-    height: 5rem;
+    height: 80px;
     background-color: white !important;
     z-index: 1000;
+    padding: 0;
+    transition: all 0.3s ease;
+}
+
+/* Logo and Branding */
+.navbar-brand {
+    font-size: 1.25rem;
+    transition: transform 0.3s ease;
+}
+
+.navbar-brand:hover {
+    transform: scale(1.05);
 }
 
 .navbar-brand i {
     font-size: 2rem !important;
+    transition: transform 0.5s ease;
+}
+
+.navbar-brand:hover i {
+    transform: rotate(15deg);
+}
+
+/* Search Bar - Wider Desktop Version */
+.search-form {
+    flex: 1;
+    max-width: 600px !important;
+    /* Increased width */
+    transition: all 0.3s ease;
 }
 
 .searchbar {
-    height: 50px;
+    height: 48px;
     background-color: #ffffff;
-    border-radius: 30px;
+    border-radius: 24px !important;
     padding: 5px 10px;
     display: flex;
     align-items: center;
     width: 100%;
+    border: 1px solid #dddddd !important;
+    transition: all 0.3s ease;
+}
+
+.searchbar:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    transform: translateY(-1px);
 }
 
 .search_input {
     border: none;
     outline: none;
     width: 100%;
-    font-size: 1rem;
-    padding: 5px;
+    font-size: 0.95rem;
+    padding: 5px 15px;
+    background: transparent;
+    transition: all 0.3s ease;
+}
+
+.search_input:focus {
+    padding-left: 20px;
 }
 
 .search_icon {
@@ -47,31 +87,177 @@ body {
     color: white;
     border: none;
     border-radius: 50%;
-    width: 42px;
+    width: 40px;
     height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    text-decoration: none;
+    transition: all 0.3s ease;
 }
 
+.search_icon:hover {
+    transform: scale(1.1);
+    background: #e61e4d;
+}
+
+/* Mobile Search with Animation */
+.mobile-search {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    z-index: 999;
+    display: none;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+}
+
+.search-input-mobile {
+    height: 48px;
+    transition: all 0.3s ease;
+}
+
+.search-input-mobile:focus {
+    border-color: #ff385c;
+}
+
+.search-btn-mobile {
+    height: 48px;
+    transition: all 0.3s ease;
+}
+
+.search-btn-mobile:hover {
+    background: #e61e4d !important;
+}
+
+/* Navigation Links with Animation */
+.hover-scale {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.hover-scale:hover {
+    transform: scale(1.05);
+    color: #ff385c !important;
+}
+
+/* User Icon Animation */
 .user_icon {
     background: #ff385c;
     color: white;
     border-radius: 50%;
-    width: 42px;
+    width: 40px;
     height: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: all 0.3s ease;
 }
 
-.user_btn {
-    padding: 0;
-    border: none;
-    background: transparent;
+.hover-grow:hover .user_icon {
+    transform: scale(1.1);
+    background: #e61e4d;
 }
+
+/* Dropdown Animations */
+.dropdown-animate {
+    animation: fadeInUp 0.3s ease forwards;
+    transform-origin: top center;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.dropdown-item {
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.hover-slide {
+    position: relative;
+}
+
+.hover-slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: #f7f7f7;
+    transition: all 0.3s ease;
+    z-index: -1;
+}
+
+.hover-slide:hover::before {
+    left: 0;
+}
+
+.dropdown-hr {
+    margin: 8px 0;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.dropdown-menu:hover .dropdown-hr {
+    opacity: 1;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 991.98px) {
+    .navbar {
+        height: 72px;
+    }
+
+    .mobile-search {
+        top: 72px;
+    }
+
+    .search-form {
+        max-width: 450px !important;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .navbar {
+        height: 64px;
+    }
+
+    .mobile-search {
+        top: 64px;
+    }
+
+    .navbar-brand i {
+        font-size: 1.75rem !important;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .user_icon {
+        width: 36px;
+        height: 36px;
+    }
+
+    .search-input-mobile,
+    .search-btn-mobile {
+        height: 42px;
+    }
+}
+
 
 
 /*  Filters style  */

@@ -1,11 +1,11 @@
 <!-- Navbar -->
-<nav class="navbar navbar-expand-md navbar-light bg-light border-bottom fixed-top">
-    <div class="container-fluid d-flex justify-content-between align-items-center">
+<nav class="navbar navbar-expand-md navbar-light bg-white border-bottom fixed-top">
+    <div class="container-fluid px-3">
 
         <!-- Mobile Left: Hamburger + Logo Centered -->
         <div class="d-md-none d-flex align-items-center w-100 justify-content-between">
             <!-- Hamburger -->
-            <button class="navbar-toggler bg-light border" type="button" data-bs-toggle="collapse"
+            <button class="navbar-toggler border-0 p-1 me-2" type="button" data-bs-toggle="collapse"
                 data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false"
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -22,7 +22,6 @@
                 <button id="mobileSearchToggle" class="btn user_btn me-2" type="button">
                     <span class="user_icon"><i class="fa-solid fa-magnifying-glass"></i></span>
                 </button>
-
 
                 <!-- User icon dropdown -->
                 <div class="dropdown">
@@ -46,68 +45,82 @@
         </div>
 
         <!-- Desktop Logo -->
-        <a class="navbar-brand d-none d-md-flex align-items-center" href="/listings">
-            <i class="fa-regular fa-compass fs-3 text-danger"></i>
+        <a class="navbar-brand d-none d-md-flex align-items-center me-4" href="/listings">
+            <i class="fa-regular fa-compass fs-3 text-danger me-2"></i>
+            <span class="fw-bold">Wanderlust</span>
         </a>
 
         <!-- Collapse Content -->
-        <div class="collapse navbar-collapse bg-light py-3 py-md-0" id="navbarContent">
+        <div class="collapse navbar-collapse bg-white" id="navbarContent">
             <!-- Links -->
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
                 <li class="nav-item">
-                    <a class="nav-link active" href="/listings">Explore</a>
+                    <a class="nav-link active fw-semibold px-3 hover-scale" href="/listings">Explore</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="/listings/new">Wandlust your home</a>
+                    <a class="nav-link active fw-semibold px-3 hover-scale" href="/listings/new">Wanderlust your
+                        home</a>
                 </li>
             </ul>
 
-            <!-- Search bar (only for md and above) -->
-            <form action="/search" method="get" class="d-none d-md-flex mx-auto" style="flex: 1; max-width: 550px;">
-                <div class="searchbar border w-100">
-                    <input class="search_input" type="text" name="query" placeholder="Search...">
-                    <button type="submit" class="search_icon"><i class="fa-solid fa-magnifying-glass"></i> </button>
+            <!-- Search bar (wider for desktop) -->
+            <form action="/search" method="get" class="d-none d-md-flex mx-4 search-form">
+                <div class="searchbar border rounded-pill w-100">
+                    <input class="search_input" type="text" name="query" placeholder="Where would you like to go?">
+                    <button type="submit" class="search_icon"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </div>
             </form>
 
             <!-- User icon desktop -->
-            <div class="dropdown d-none d-md-block ms-3">
-                <button class="btn user_btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <div class="dropdown d-none d-md-block">
+                <button class="btn user_btn hover-grow" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     <span class="user_icon"><i class="fa-solid fa-user"></i></span>
                 </button>
-                <ul class="dropdown-menu dropdown-menu-end">
+                <ul class="dropdown-menu dropdown-menu-end dropdown-animate">
                     <% if (!currUser) { %>
-                        <li><a class="dropdown-item" href="/SingUp">Sign Up</a></li>
-                        <li><a class="dropdown-item" href="/login">Log In</a></li>
+                        <li><a class="dropdown-item hover-slide" href="/SingUp">Sign Up</a></li>
+                        <li><a class="dropdown-item hover-slide" href="/login">Log In</a></li>
                         <% } %>
                             <% if (currUser) { %>
-                                <li><a class="dropdown-item" href="/profile/<%= currUser.id %>">Profile</a></li>
-                                <li><a class="dropdown-item" href="/logout">Log Out</a></li>
+                                <li><a class="dropdown-item hover-slide" href="/profile/<%= currUser.id %>">Profile</a>
+                                </li>
+                                <li><a class="dropdown-item hover-slide" href="/logout">Log Out</a></li>
                                 <% } %>
-                                    <hr>
-                                    <li><a class="dropdown-item" href="#">Help Center</a></li>
+                                    <hr class="dropdown-hr">
+                                    <li><a class="dropdown-item hover-slide" href="#">Help Center</a></li>
                 </ul>
             </div>
         </div>
     </div>
+
+    <!-- Mobile search bar (toggle with animation) -->
+    <div id="mobileSearchBar" class="d-md-none w-100 bg-white p-3 border-bottom mobile-search">
+        <form action="/search" method="get" class="d-flex">
+            <input class="form-control rounded-start-pill border-end-0 search-input-mobile" type="text" name="query"
+                placeholder="Where would you like to go?">
+            <button class="btn btn-danger rounded-end-pill border-start-0 px-3 search-btn-mobile" type="submit">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+        </form>
+    </div>
 </nav>
 
-<!-- Mobile search bar (toggle) -->
-<div id="mobileSearchBar" class="d-md-none px-3 py-2 bg-light border-bottom" style="display: none;">
-    <form action="/search" method="get" class="d-flex">
-        <input class="form-control me-2" type="text" name="query" placeholder="Search...">
-        <button class="btn btn-danger" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-    </form>
-</div>
-
 <script>
+    // Mobile search toggle with animation
     document.getElementById('mobileSearchToggle').addEventListener('click', function () {
         const searchBar = document.getElementById('mobileSearchBar');
         if (searchBar.style.display === 'none' || searchBar.style.display === '') {
             searchBar.style.display = 'block';
+            setTimeout(() => {
+                searchBar.style.opacity = '1';
+                searchBar.style.transform = 'translateY(0)';
+            }, 10);
         } else {
-            searchBar.style.display = 'none';
+            searchBar.style.opacity = '0';
+            searchBar.style.transform = 'translateY(-10px)';
+            setTimeout(() => {
+                searchBar.style.display = 'none';
+            }, 300);
         }
     });
-
 </script>
