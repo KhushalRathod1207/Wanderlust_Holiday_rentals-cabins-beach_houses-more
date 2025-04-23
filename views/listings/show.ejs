@@ -117,12 +117,15 @@
                                                                 <p class="card-text">
                                                                     <%= review.comment %>
                                                                 </p>
-                                                                <form
-                                                                    action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE"
-                                                                    method="post">
-                                                                    <button
-                                                                        class="btn btn-sm btn-danger">Delete</button>
-                                                                </form>
+                                                                <% if (currUser &&
+                                                                    review.author._id.equals(currUser._id)) { %>
+                                                                    <form
+                                                                        action="/listings/<%= listing._id %>/reviews/<%= review._id %>?_method=DELETE"
+                                                                        method="post">
+                                                                        <button
+                                                                            class="btn btn-sm btn-danger">Delete</button>
+                                                                    </form>
+                                                                    <% } %>
                                                             </div>
                                                         </div>
                                                     </div>
